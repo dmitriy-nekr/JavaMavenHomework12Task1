@@ -21,9 +21,9 @@ public class FilmRepository {
 
     public Film[] findLast() {
         Film[] all = findAll();
-        int resultLenght=10;
-        if(resultLenght> all.length){
-            resultLenght= all.length;
+        int resultLenght = 10;
+        if (resultLenght > all.length) {
+            resultLenght = all.length;
         }
         Film[] reversed = new Film[resultLenght];
         for (int i = 0; i < resultLenght; i++) {
