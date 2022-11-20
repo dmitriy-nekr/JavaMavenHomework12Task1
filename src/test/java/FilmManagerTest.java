@@ -3,9 +3,9 @@ import org.junit.jupiter.api.Assertions;
 
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Film;
-import ru.netology.repositories.FilmRepository;
+import ru.netology.repositories.FilmManager;
 
-public class FilmRepositoryTest {
+public class FilmManagerTest {
 
     Film film1 = new Film("Batman");
     Film film2 = new Film("Avengers");
@@ -22,7 +22,7 @@ public class FilmRepositoryTest {
 
     @Test
     public void shouldAddFilm() {
-        FilmRepository repo = new FilmRepository();
+        FilmManager repo = new FilmManager();
         repo.addFilm(film1);
         repo.addFilm(film2);
         repo.addFilm(film3);
@@ -36,7 +36,7 @@ public class FilmRepositoryTest {
 
     @Test
     public void shouldFindLast() {
-        FilmRepository repo = new FilmRepository();
+        FilmManager repo = new FilmManager(5);
         repo.addFilm(film1);
         repo.addFilm(film2);
         repo.addFilm(film3);
@@ -44,13 +44,13 @@ public class FilmRepositoryTest {
         repo.addFilm(film5);
         repo.addFilm(film6);
         Film[] expected = {film6, film5, film4, film3, film2};
-        Film[] actual = repo.findLast(5);
+        Film[] actual = repo.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldFindLast1() {
-        FilmRepository repo = new FilmRepository();
+        FilmManager repo = new FilmManager();
         repo.addFilm(film1);
         repo.addFilm(film2);
         repo.addFilm(film3);
@@ -71,7 +71,7 @@ public class FilmRepositoryTest {
 
     @Test
     public void shouldFindLast2() {
-        FilmRepository repo = new FilmRepository();
+        FilmManager repo = new FilmManager();
         repo.addFilm(film1);
         repo.addFilm(film2);
         repo.addFilm(film3);

@@ -2,8 +2,17 @@ package ru.netology.repositories;
 
 import ru.netology.domain.Film;
 
-public class FilmRepository {
+public class FilmManager {
     private Film[] films = new Film[0];
+    private int resultLength = 10;
+
+    public FilmManager() {
+
+    }
+
+    public FilmManager(int resultLength) {
+        this.resultLength = resultLength;
+    }
 
     public void addFilm(Film film) {
         Film[] tmp = new Film[films.length + 1];
@@ -21,18 +30,25 @@ public class FilmRepository {
 
     public Film[] findLast() {
         Film[] all = findAll();
-        int resultLenght = 10;
-        if (resultLenght > all.length) {
-            resultLenght = all.length;
+        int a = getResultLength();
+        if (a > all.length) {
+            a = all.length;
         }
-        Film[] reversed = new Film[resultLenght];
-        for (int i = 0; i < resultLenght; i++) {
+        Film[] reversed = new Film[a];
+        for (int i = 0; i < a; i++) {
             reversed[i] = all[all.length - 1 - i];
         }
         return reversed;
     }
 
-    public Film[] findLast(int resultLength) {
+    public int getResultLength() {
+        return resultLength;
+    }
+}
+
+
+/*
+    public Film[] findLast() {
         Film[] all = findAll();
         Film[] reversed = new Film[resultLength];
         for (int i = 0; i < resultLength; i++) {
@@ -41,3 +57,5 @@ public class FilmRepository {
         return reversed;
     }
 }
+
+ */
